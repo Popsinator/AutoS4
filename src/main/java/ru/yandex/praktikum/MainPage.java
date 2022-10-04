@@ -29,65 +29,65 @@ public class MainPage {
     }
 
     //локатор кнопки заказать (верхняя)
-     private final By buttonOrderUp = By.xpath(".//button[@class = 'Button_Button__ra12g']");
+    private final By buttonOrderUp = By.xpath(".//button[@class = 'Button_Button__ra12g']");
 
     //локатор кнопки заказать внизу страницы
-     private final By buttonOrderDown =
+    private final By buttonOrderDown =
             By.xpath(".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM']");
 
     //локатор стрелочки: вопрос №1
-     private final By arrowQuestion1 = By.id("accordion__heading-0");
+    private final By arrowQuestion1 = By.id("accordion__heading-0");
 
     //сам вопрос №1
-     private final By textQuestion1 = By.id("accordion__panel-0");
+    private final By textQuestion1 = By.id("accordion__panel-0");
 
     //локатор стрелочки: вопрос о важном №2
-     private final By arrowQuestion2 = By.id("accordion__heading-1");
+    private final By arrowQuestion2 = By.id("accordion__heading-1");
 
     //сам вопрос №2
-     private final By textQuestion2 = By.id("accordion__panel-1");
+    private final By textQuestion2 = By.id("accordion__panel-1");
 
     //локатор стрелочки: вопрос о важном №3
-     private final By arrowQuestion3 = By.id("accordion__heading-2");
+    private final By arrowQuestion3 = By.id("accordion__heading-2");
 
     //сам вопрос №3
-     private final By textQuestion3 = By.id("accordion__panel-2");
+    private final By textQuestion3 = By.id("accordion__panel-2");
 
     //локатор стрелочки: вопрос о важном №4
-     private final By arrowQuestion4 = By.id("accordion__heading-3");
+    private final By arrowQuestion4 = By.id("accordion__heading-3");
 
     //сам вопрос №4
-     private final By textQuestion4 = By.id("accordion__panel-3");
+    private final By textQuestion4 = By.id("accordion__panel-3");
 
     //локатор стрелочки: вопрос о важном №5
-     private final By arrowQuestion5 = By.id("accordion__heading-4");
+    private final By arrowQuestion5 = By.id("accordion__heading-4");
 
     //сам вопрос №5
-     private final By textQuestion5 = By.id("accordion__panel-4");
+    private final By textQuestion5 = By.id("accordion__panel-4");
 
     //локатор стрелочки: вопрос о важном №6
-     private final By arrowQuestion6 = By.id("accordion__heading-5");
+    private final By arrowQuestion6 = By.id("accordion__heading-5");
 
     //сам вопрос №6
-     private final By textQuestion6 = By.id("accordion__panel-5");
+    private final By textQuestion6 = By.id("accordion__panel-5");
 
     //локатор стрелочки: вопрос №7
-     private final By arrowQuestion7 = By.id("accordion__heading-6");
+    private final By arrowQuestion7 = By.id("accordion__heading-6");
 
     //сам вопрос №7
-     private final By textQuestion7 = By.id("accordion__panel-6");
+    private final By textQuestion7 = By.id("accordion__panel-6");
 
     //локатор стрелочки: вопрос №8
-     private final By arrowQuestion8 = By.id("accordion__heading-7");
+    private final By arrowQuestion8 = By.id("accordion__heading-7");
 
     //сам вопрос №8
-     private final By textQuestion8 = By.id("accordion__panel-7");
+    private final By textQuestion8 = By.id("accordion__panel-7");
 
     //локатор CookieButton
-     private final By elementCookie = By.className("App_CookieButton__3cvqF");
+    private final By elementCookie = By.className("App_CookieButton__3cvqF");
 
-     private final List<By> elementArrow = Arrays.asList(arrowQuestion1, arrowQuestion2, arrowQuestion3, arrowQuestion4,
-             arrowQuestion5, arrowQuestion6, arrowQuestion7, arrowQuestion8);
+    private final List<By> elementArrow = Arrays.asList(arrowQuestion1, arrowQuestion2, arrowQuestion3, arrowQuestion4,
+            arrowQuestion5, arrowQuestion6, arrowQuestion7, arrowQuestion8);
 
     private final List<By> elementText = Arrays.asList(textQuestion1, textQuestion2, textQuestion3, textQuestion4,
             textQuestion5, textQuestion6, textQuestion7, textQuestion8);
