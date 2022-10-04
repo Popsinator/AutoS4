@@ -10,18 +10,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class ProcessTest {
 
     private WebDriver driver;
-    MasterPage page;
-    ClassForPageOrder order;
+    MainPage page;
 
     @Before
     public void startUp() {
         //driver = new ChromeDriver(); //Здесь баг, не нажимается кнопка, чтобы оформить заказ, в firefox всё ок
         driver = new FirefoxDriver();
-        page = new MasterPage(driver);
+        page = new MainPage(driver);
     }
 
     @Test
-    public void ProcessUpButton1() {
+    public void ClickButtonOrderUp1() {
 
         page.open()
                 .clickCookieButton()
@@ -37,7 +36,7 @@ public class ProcessTest {
     }
 
     @Test
-    public void ProcessUpButton2() {
+    public void ClickButtonOrderUp2() {
 
                 page.open()
                 .clickCookieButton()
@@ -53,7 +52,7 @@ public class ProcessTest {
     }
 
     @Test
-    public void ProcessDownButton1() {
+    public void ClickButtonOrderDown1() {
 
                 page.open()
                 .clickCookieButton()
@@ -69,7 +68,7 @@ public class ProcessTest {
     }
 
     @Test
-    public void ProcessDownButton2() {
+    public void ClickButtonOrderDown2() {
 
         page.open()
                 .clickCookieButton()
@@ -86,7 +85,7 @@ public class ProcessTest {
 
     @After
     public void teardown() {
-        // Закрой браузер
+        // Закрытие браузера
         driver.quit();
     }
 }

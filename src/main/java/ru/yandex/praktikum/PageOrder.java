@@ -10,178 +10,167 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class ClassForPageOrder {
+public class PageOrder {
 
     //драйвер для браузера
     private WebDriver driver;
 
-    public ClassForPageOrder(WebDriver driver) {
+    public PageOrder(WebDriver driver) {
         this.driver = driver;
     }
 
     //локатор поля ввода имени
-     private  static final By FIELDINNAME = By.xpath(".//input[@placeholder = '* Имя']");
+     private final By fieldInName = By.xpath(".//input[@placeholder = '* Имя']");
 
     //локатор поля ввода фамилии
-     private  static final By FIELDINSURENAME = By.xpath(".//input[@placeholder = '* Фамилия']");
+     private final By fieldInSurename = By.xpath(".//input[@placeholder = '* Фамилия']");
 
     //локатор поля ввода адреса
-     private  static final By FIELDINADDRESS =
+     private final By fieldInAddress =
             By.xpath(".//input[@placeholder = '* Адрес: куда привезти заказ']");
 
     //локатор поля ввода станции метро
-     private  static final By FIELDINSTATIONMETRO = By.xpath(".//input[@placeholder = '* Станция метро']");
+     private final By fieldInStationMetro = By.xpath(".//input[@placeholder = '* Станция метро']");
 
     //локатор первого варианта в выпадающем списке станций метро
-     private  static final By FIELDFIRSTSTATION =
+     private final By fieldFirstStation =
             By.xpath(".//li[@class = 'select-search__row'][@data-index = '0']");
 
     //локатор поля ввода номера телефона
-     private  static final By FIELDPHONE =
+     private final By fieldPhone =
             By.xpath(".//input[@placeholder = '* Телефон: на него позвонит курьер']");
 
     //локатор кнопки далее
-     private  static final By FIELDNEXT =
+     private final By fieldNext =
             By.xpath(".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM'][text() = 'Далее']");
 
     //про аренду
     //локатор поля ввода даты аренды самоката
-     private  static final By FIELDINDATA = By.xpath(".//input[@placeholder = '* Когда привезти самокат']");
+     private final By fieldInData = By.xpath(".//input[@placeholder = '* Когда привезти самокат']");
 
     //локатор поля ввода времени аренды
-    private  static final By FIELDINDATARENTA = By.xpath(".//span[@class = 'Dropdown-arrow']");
+    private final By fieldInDataRenta = By.xpath(".//span[@class = 'Dropdown-arrow']");
 
     //Выбор элемента выпадающего списка с временем аренды
-    public WebElement getRentalRangeByText(String range) {
+    public PageOrder getRentalRangeByText(String range) {
         List<WebElement> menu = driver.findElements(By.className("Dropdown-option"));
-        WebElement element = driver.findElement(By.className("Dropdown-menu"));
-        for (WebElement webElement : menu) {
-            if(webElement.getText().equals(range)) {
-                element = webElement;
-                break;
-            }
-        }
-        return element;
+        menu.stream().filter(x-> x.getText().equals(range)).findFirst().get().click();
+        return this;
     }
 
     //локатор поля ввода комментария для курьера
-     private  static final By FIELDINCOMMENTFORCOURIER =
+     private final By fieldInCommentForCourier =
             By.xpath(".//input[@class = 'Input_Input__1iN_Z Input_Responsible__1jDKN']");
 
 
     //локатор кнопки заказать (нижняя)
-     private  static final By BUTTONMAKEORDERDOWN =  By.xpath
+     private final By buttonMakeOrderDown =  By.xpath
             (".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM'][text() = 'Заказать']");
 
     //локатор кнопки подтверждения заказа
-     private  static final By BUTTONCONFIRMORDER =
+     private final By buttonConfirmOrder =
             By.xpath(".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM'][text() = 'Да']");
 
 
     //локатор вспывающего окна об успешном заказе
-     private  static final By WINDOWSUCCESSORDER = By.className("Order_Modal__YZ-d3");
+     private final By windowSuccessOrder = By.className("Order_Modal__YZ-d3");
 
     //локатор текста с номером заказа
-    private  static final By NUMBERORDER =  By.className("Order_ModalHeader__3FDaJ");
+    private final By numberOrder =  By.className("Order_ModalHeader__3FDaJ");
 
     //клик и ввод имени
-    public ClassForPageOrder clickAndInputName(String name) {
-        driver.findElement(FIELDINNAME).click();
-        driver.findElement(FIELDINNAME).sendKeys(name);
+    public PageOrder clickAndInputName(String name) {
+        driver.findElement(fieldInName).click();
+        driver.findElement(fieldInName).sendKeys(name);
         return this;
     }
 
     //клик и ввод Фамилии
-    public ClassForPageOrder clickAndInputSurname(String surname) {
-        driver.findElement(FIELDINSURENAME).click();
-        driver.findElement(FIELDINSURENAME).sendKeys(surname);
+    public PageOrder clickAndInputSurname(String surname) {
+        driver.findElement(fieldInSurename).click();
+        driver.findElement(fieldInSurename).sendKeys(surname);
         return this;
     }
 
     //клик и ввод Адреса
-    public ClassForPageOrder clickAndInputAddress(String address) {
-        driver.findElement(FIELDINADDRESS).click();
-        driver.findElement(FIELDINADDRESS).sendKeys(address);
+    public PageOrder clickAndInputAddress(String address) {
+        driver.findElement(fieldInAddress).click();
+        driver.findElement(fieldInAddress).sendKeys(address);
         return this;
     }
 
     //клик и ввод Станции метро
-    public ClassForPageOrder clickAndInputStation(String station) {
-        driver.findElement(FIELDINSTATIONMETRO).click();
-        driver.findElement(FIELDINSTATIONMETRO).sendKeys(station);
-        driver.findElement(FIELDFIRSTSTATION).click();
+    public PageOrder clickAndInputStation(String station) {
+        driver.findElement(fieldInStationMetro).click();
+        driver.findElement(fieldInStationMetro).sendKeys(station);
+        driver.findElement(fieldFirstStation).click();
         return this;
     }
 
     //клик и ввод Телефона
-    public ClassForPageOrder clickAndInputPhone(String phone) {
-        driver.findElement(FIELDPHONE).click();
-        driver.findElement(FIELDPHONE).sendKeys(phone);
+    public PageOrder clickAndInputPhone(String phone) {
+        driver.findElement(fieldPhone).click();
+        driver.findElement(fieldPhone).sendKeys(phone);
         return this;
     }
 
     //клик по кнопке Далее
-    public ClassForPageOrder clickNext() {
-        driver.findElement(FIELDNEXT).click();
+    public PageOrder clickNext() {
+        driver.findElement(fieldNext).click();
         return this;
     }
 
     //клик и ввод "Когда привезти"
-    public ClassForPageOrder fillRentalDate(String date) {
-        driver.findElement(FIELDINDATA).click();
-        driver.findElement(FIELDINDATA).sendKeys(date);
+    public PageOrder fillRentalDate(String date) {
+        driver.findElement(fieldInData).click();
+        driver.findElement(fieldInData).sendKeys(date);
         return this;
     }
 
     //метод клика по полю ввода Срока аренды и ввод
-    public ClassForPageOrder fillRentalRange(String range) {
-        driver.findElement(FIELDINDATARENTA).click();
+    public PageOrder fillRentalRange(String range) {
+        driver.findElement(fieldInDataRenta).click();
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.className("Dropdown-menu")));
-        getRentalRangeByText(range).click();
-        return this;
+        return getRentalRangeByText(range);
+        //return this;
     }
 
     //метод выбора цвета самоката
-    private ClassForPageOrder setColor(String color) {
+    private PageOrder setColor(String color) {
         List<WebElement> menu = driver.findElements(By.className("Checkbox_Label__3wxSf"));
-        for (WebElement webElement : menu) {
-            if(webElement.getText().equals(color)) {
-                webElement.click();
-                break;
-            }
-        }
+        menu.stream().filter( x-> x.getText().equals(color)).findFirst().get().click();
         return this;
     }
 
     //метод клика по полю ввода Комментария и ввод
-    public ClassForPageOrder fillComment(String comment) {
-        driver.findElement(FIELDINCOMMENTFORCOURIER).click();
-        driver.findElement(FIELDINCOMMENTFORCOURIER).sendKeys(comment);
+    public PageOrder fillComment(String comment) {
+        driver.findElement(fieldInCommentForCourier).click();
+        driver.findElement(fieldInCommentForCourier).sendKeys(comment);
         return this;
     }
 
     //метод клика по кнопке Заказать
-    public ClassForPageOrder makeOrder() {
-        driver.findElement(BUTTONMAKEORDERDOWN).click();
+    public PageOrder makeOrder() {
+        driver.findElement(buttonMakeOrderDown).click();
         return this;
     }
 
     //метод клика по кнопке подтверждения заказа (Да)
-    public ClassForPageOrder clickYesOrderButton() {
-        driver.findElement(BUTTONCONFIRMORDER).click();
+    public PageOrder clickYesOrderButton() {
+        driver.findElement(buttonConfirmOrder).click();
         return this;
     }
 
     //метод проверки того, что появилось всплывающее окно с сообщением "Заказ оформлен"
     public void successfulOrder() {
-        boolean flag = driver.findElement(WINDOWSUCCESSORDER).isDisplayed()
-                && driver.findElement(NUMBERORDER).getText().contains("Заказ оформлен");
+        boolean flag = driver.findElement(windowSuccessOrder).isDisplayed()
+                && driver.findElement(numberOrder).getText().contains("Заказ оформлен");
         assertTrue(flag);
     }
 
     //Вводим имя, фамилию, адрес, станцию метро, номер телефона
-    public ClassForPageOrder fillFirstForm(String name, String surname, String address,
+    public PageOrder fillFirstForm(String name, String surname, String address,
                                            String metroStation, String phoneNumber) {
         return this.clickAndInputName(name)
                 .clickAndInputSurname(surname)
@@ -191,7 +180,7 @@ public class ClassForPageOrder {
     }
 
     //Вводим дату аренды, срок аренды, цвет самоката, комментарий курьеру
-    public ClassForPageOrder fillSecondForm(String rentalDate, String rentalRange, String color, String comment) {
+    public PageOrder fillSecondForm(String rentalDate, String rentalRange, String color, String comment) {
 
         return this.fillRentalDate(rentalDate)
                 .fillRentalRange(rentalRange)

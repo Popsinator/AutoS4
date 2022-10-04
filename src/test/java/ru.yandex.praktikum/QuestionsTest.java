@@ -3,83 +3,58 @@ package ru.yandex.praktikum;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+@RunWith(Parameterized.class)
 public class QuestionsTest {
 
     private WebDriver driver;
-    MasterPage page;
+    private MainPage page;
+    private final String text;
+    private int number = 0;
+    private final boolean isDisplayedText;
+    public QuestionsTest(String text, int number, boolean isDisplayedText) {
+        this.text = text;
+        this.number = number;
+        this.isDisplayedText = isDisplayedText;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] testData() {
+        return new Object[][] {
+                {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.", 0, true},
+                {"Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями," +
+                        " можете просто сделать несколько заказов — один за другим.", 1, true},
+                {"Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт " +
+                        "времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли " +
+                        "самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", 2, true},
+                {"Только начиная с завтрашнего дня. Но скоро станем расторопнее.", 3, true},
+                {"Пока что нет! Но если что-то срочное — всегда можно позвонить в " +
+                        "поддержку по красивому номеру 1010.", 4, true},
+                {"Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете " +
+                        "кататься без передышек и во сне. Зарядка не понадобится.", 5, true},
+                {"Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим." +
+                        " Все же свои.", 6, true},
+                {"Да, обязательно. Всем самокатов! И Москве, и Московской области.", 7, true}
+        };
+    }
 
     @Before
     public void startUp() {
         driver = new ChromeDriver();
         //driver = new FirefoxDriver();
-        page = new MasterPage(driver);
+        page = new MainPage(driver);
     }
 
     @Test
-    public void QuestionTest1() {
+    public void checkTextAnswerOnQuestionTest() {
 
         page.open()
                 .clickCookieButton()
-                .clickQuestion1();
-    }
-
-    @Test
-    public void QuestionTest2() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion2();
-    }
-
-    @Test
-    public void QuestionTest3() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion3();
-    }
-
-    @Test
-    public void QuestionTest4() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion4();
-    }
-
-    @Test
-    public void QuestionTest5() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion5();
-    }
-
-    @Test
-    public void QuestionTest6() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion6();
-    }
-
-    @Test
-    public void QuestionTest7() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion7();
-    }
-
-    @Test
-    public void QuestionTest8() {
-
-        page.open()
-                .clickCookieButton()
-                .clickQuestion8();
+                .clickAndCheckAnswerOnQuestion(text, number, isDisplayedText);
     }
 
     @After
